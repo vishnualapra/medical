@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Garden Store</title>
+</head>
+<body>
+<div style="width:595px; margin: 0 auto;">
+    <hr>
+<h1 style="margin:0 auto; text-align: center; font-family:Lucida Blackletter, eufm10, blackletter"> <b style="color: blue;">Garden<span style="color: #99ca32;"> Store</span></b> </h1>
+   <hr>
+    <div>
+    <div> <h5>Order ID: {{ product.order_id }}<br>
+  Product ID: {{ product.order_product_id }}<br>
+        Product Name: {{ product.product_name }}</h5></div><hr>
+
+     <div style="margin-top: 10px;"> <h5>Work: {{ job.job }} <br>Worker ID: worker.id<br>
+  Worker Name: {{ worker.worker_name }}<br>
+        Start Date: {{ job.job_start_at }}</h5></div></div><hr>
+    <div style="width: 100%; height: 100%;">
+       <h3>Product Details</h3>
+         <table style="color: #000000; width: 100%; text-align: justify; border: 1px solid green;">
+
+   <tr style="font-weight: bold;">
+       <td style="border: 1px solid green;">Measurement</td><td style="border: 1px solid green;">Description</td><td style="border: 1px solid green;">Value</td>
+   </tr>
+    {% for too in product.measurements %}
+                                      <tr>
+                                        <td  style="border: 1px solid green;">{{ too.measurement.0.name }} </td>
+                                          <td  style="border: 1px solid green;">{{ too.measurement.0.description }} </td>
+                                        <td style="border: 1px solid green;" >{{ too.value }}</td>
+                                      </tr>{% endfor %}</table><hr>
+   <button type="button" onclick="myFunction()" style="float: right; background: #99ca32;border-radius: 5px; line-height: 30px; margin-top: 20px; width: 100px; color: #fff; ">Print</button>
+    </div>
+</div>
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
+</body>
+</html>

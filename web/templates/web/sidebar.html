@@ -1,0 +1,425 @@
+ {% load staticfiles %}
+ <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      {% if request.user.is_superuser  %}
+      <ul class="sidebar-menu" data-widget="tree">
+
+        <li {% if activate == 'home' %}class="active"{% endif %} >
+          <a href="{% url 'home' %}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Headquarters</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+          <li><a href=""><i class="fa fa-circle-thin"></i>Add New </a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Custom</a></li>
+
+
+          </ul>
+        </li>
+       <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Add Admin</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+
+			<li><a href="register"><i class="fa fa-circle-thin"></i>Add New</a></li>
+              <li><a href=""><i class="fa fa-circle-thin"></i>View All</a></li>
+          </ul>
+        </li>
+
+       <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Profile</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-thin"></i>View</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Edit</a></li>
+
+          </ul>
+        </li>
+
+
+
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Settings</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-thin"></i>Genral</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Setting</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Print Setup</a></li>
+                <li><a href=""><i class="fa fa-circle-thin"></i>Database Management</a></li>
+
+
+
+          </ul>
+        </li>
+
+
+      </ul>
+      {% elif request.user.is_staff  %}
+    <ul class="sidebar-menu" data-widget="tree">
+
+        <li {% if activate == 'home' %}class="active"{% endif %} >
+          <a href="{% url 'home' %}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+        </li>
+
+
+
+
+
+
+    <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Doctors</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+          </ul>
+        </li>
+    <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Chemist</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+          </ul>
+        </li>
+    <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Tour Plans</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+
+          </ul>
+        </li>
+
+
+
+       <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Profile</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-thin"></i>View</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Edit</a></li>
+
+          </ul>
+        </li>
+ <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-thin"></i>Sales Report</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Visit Reports</a></li>
+              <li><a href=""><i class="fa fa-circle-thin"></i>Target.. Reports</a></li>
+
+          </ul>
+        </li>
+
+
+
+
+
+      </ul>
+
+
+
+          {% else %}
+    <ul class="sidebar-menu" data-widget="tree">
+
+        <li {% if activate == 'home' %}class="active"{% endif %} >
+          <a href="{% url 'home' %}">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Headquarters</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+          </ul>
+        </li>
+     <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Substations</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+          </ul>
+        </li>
+     <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>HQ Admin</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+                <li>
+         <a href="reguser"><i class="fa fa-circle-thin"></i>Add New</a></li>
+
+
+          </ul>
+        </li>
+    <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Representatives</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+          </ul>
+        </li>
+    <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Product Category</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+          </ul>
+        </li>
+    <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Products</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+          </ul>
+        </li>
+    <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Department</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+          </ul>
+        </li>
+    <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Doctors</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+          </ul>
+        </li>
+    <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Chemist</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>All</a></li>
+
+
+          </ul>
+        </li>
+    <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Targets</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+              <li>
+         <a href=""><i class="fa fa-circle-thin"></i>Total Targets for HQ</a></li>
+                 <li>
+         <a href=""><i class="fa fa-circle-thin"></i>Total Targets for Representatives</a></li>
+                 <li>
+         <a href=""><i class="fa fa-circle-thin"></i> Product wise Targets for HQ</a></li>
+                 <li>
+         <a href=""><i class="fa fa-circle-thin"></i>Product wise Targets for Representatives</a></li>
+
+
+          </ul>
+        </li>
+
+  <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Holiday Management</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-thin"></i>Account Book</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Day Book</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Wages Resister</a></li>
+			<li><a href=""><i class="fa fa-circle-thin"></i>Dues Register</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Trial Reminder</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Birthday Reminder</a></li>
+			<li><a href=""><i class="fa fa-circle-thin"></i>Ratings</a></li>
+          </ul>
+        </li>
+       <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Profile</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-thin"></i>View</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Edit</a></li>
+
+          </ul>
+        </li>
+ <li class="treeview">
+          <a href="#">
+            <i class="fa fa-th"></i>
+            <span>Reports</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-thin"></i>Sales Report</a></li>
+            <li><a href=""><i class="fa fa-circle-thin"></i>Target Report</a></li>
+
+          </ul>
+        </li>
+
+
+
+
+
+      </ul>
+    {% endif %}
+    </section>
+  </aside>

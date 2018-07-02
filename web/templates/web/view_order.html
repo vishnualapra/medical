@@ -1,0 +1,508 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+
+    <title>Tailering Admin</title>
+
+	<!-- Bootstrap 4.0-->
+	<link rel="stylesheet" href="{% static 'assets/vendor_components/bootstrap/dist/css/bootstrap.css'  %}">
+
+	<!-- Bootstrap 4.0-->
+	<link rel="stylesheet" href="{% static 'assets/vendor_components/bootstrap/dist/css/bootstrap-extend.css' %}">
+
+	<!-- theme style -->
+	<link rel="stylesheet" href="{% static 'css/master_style.css' %}">
+
+	<!-- MinimalPro Admin skins. choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+	<link rel="stylesheet" href="{% static 'css/skins/_all-skins.css' %}">
+
+    <!-- Vector CSS -->
+    <link href="{% static 'assets/vendor_components/jvectormap/lib2/jquery-jvectormap-2.0.2.css' %}" rel="stylesheet" />
+
+	<!-- date picker -->
+	<link rel="stylesheet" href="{% static 'assets/vendor_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css' %}">
+
+	<!-- daterange picker -->
+	<link rel="stylesheet" href="{% static 'assets/vendor_components/bootstrap-daterangepicker/daterangepicker.css' %}">
+
+	<!-- bootstrap wysihtml5 - text editor -->
+	<link rel="stylesheet" href="{% static 'assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css' %}">
+
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+
+  </head>
+
+<body class="hold-transition skin-blue-light sidebar-mini">
+<div class="wrapper">
+
+  {% include "web/header.html" %}
+
+  <!-- Left side column. contains the logo and sidebar -->
+ {% include "web/sidebar.html" %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Orders
+      </h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="home"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Orders</a></li>
+      </ol>
+    </section>
+<section class="content">
+
+
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+
+      <!-- /.row -->
+
+	  <!---//////////////////////--->
+      <div class="row">
+        <div class="col-xl-3 col-md-6 col-12 ">
+          	<div class="box box-body bg-primary">
+              <div class="flexbox">
+                <span class="ion ion-ios-person-outline font-size-50"></span>
+                <span class="font-size-24 font-weight-200">{{ orders.data.order.user_details.name }}</span>
+              </div>
+                <div class="text-right"><a href="" style="color: #FFFFFF"  data-toggle="modal" data-target=".bs-example-modal-lg" > VIew Client</a></div>
+            </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xl-3 col-md-6 col-12 ">
+          	<div class="box box-body bg-danger">
+              <div class="flexbox">
+                <span class="ion ion-ios-copy-outline font-size-50"></span>
+                <span class="font-size-40 font-weight-200"></span>
+              </div>
+              <div class="text-right">
+
+                  <!--model -->
+                  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="myLargeModalLabel" style="color: #f5b703;">Client Details</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							</div>
+							<div class="modal-body">
+                                <table style="color: #000000; width: 100%; text-align: justify; border: 1px solid blue;">
+                                    <tr>
+                                        <td style="border: 1px solid green;">Name: {{ orders.data.order.user_details.name }}</td>
+                                        <td  style="border: 1px solid green;">Gender: {{ orders.data.order.user_details.gender }}</td>
+                                    </tr>
+                                      <tr>
+                                        <td  style="border: 1px solid green;">Email : {{ orders.data.order.user_details.email }}</td>
+                                        <td style="border: 1px solid green;" >Phone : {{ orders.data.order.user_details.phone_no }}</td>
+                                    </tr>
+                                     <tr>
+                                        <td style="border: 1px solid green;">Street Address : {{ orders.data.order.address.street_address }}</td>
+                                        <td style="border: 1px solid green;">City : {{ orders.data.order.address.city }}</td>
+                                    </tr>
+                                       <tr>
+                                        <td style="border: 1px solid green;">District : {{ orders.data.order.address.district }}</td>
+                                        <td style="border: 1px solid green;">Postcode : {{ orders.data.order.address.postcode }}</td>
+                                    </tr>
+                                      <tr>
+                                        <td style="border: 1px solid green;">State : {{ orders.data.order.address.state }}</td>
+                                        <td style="border: 1px solid green;">Country : {{ orders.data.order.address.country }}</td>
+                                    </tr>
+                                     <tr>
+                                        <td style="border: 1px solid green;">Landmark : {{ orders.data.order.address.landmark }}</td>
+                                        <td style="border: 1px solid green;">Shipping Phone : {{ orders.data.order.address.phone_no }}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+                  <a href="" style="color: #FFFFFF;">View Shipping Info</a> </div>
+            </div>
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-xl-3 col-md-6 col-12">
+          	<div class="box box-body">
+              <div class="flexbox">
+                <span class="ion ion-ios-paper-outline text-primary font-size-50"></span>
+                <span class="font-size-40 font-weight-200">+100</span>
+              </div>
+              <div class="text-right">Article</div>
+            </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xl-3 col-md-6 col-12">
+          	<div class="box box-body">
+              <div class="flexbox">
+                <span class="ion ion-ios-briefcase-outline text-danger font-size-50"></span>
+                <span class="font-size-40 font-weight-200">16,568</span>
+              </div>
+              <div class="text-right">Income</div>
+            </div>
+        </div>
+        <!-- /.col -->
+      <!-- /.row -->
+
+	  <!---//////////////////////--->
+
+
+	  <!---//////////////////////--->
+
+        <!-- /.col -->
+
+
+      <!-- /.row -->
+
+      </div>
+
+
+
+    </section>
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+			<div class="col-12">
+				<div class="box">
+					<div class="box-header with-border">
+
+						<h4 class="box-title"> Ordered Items(Order ID : {{ orders.data.order.order_id }})</h4>
+                        <h6 class="box-subtitle">List of Items Ordered by <b><a href="" data-toggle="modal" data-target=".bs-example-modal-lg">{{ orders.data.order.user_details.name }}</a></b></h6>
+					</div>
+					<div class="box-body">
+
+						<div class="table-responsive">
+							<table id="tickets" class="table mt-0 table-hover no-wrap" data-page-size="10">
+								<thead>
+									<tr>
+										<th>ID #</th>
+
+										<th>Product Name</th>
+										<th>Quantity</th>
+										<th>Order Status</th>
+                                        <th>Product Details</th>
+                                        <th>Job Details</th>
+
+                                        <th></th>
+
+
+
+									</tr>
+								</thead>
+								<tbody>
+
+
+
+
+									<tr>
+                                    {% for foo in orders.data.order.orderproducts %}
+										<td>{{ foo.order_product_id }}</td>
+
+										<td>{{ foo.product_name }}</td>
+
+
+										<td>{{ foo.product_qty }}
+                                       </td>
+                                        <td>{{ foo.order_last_status.status}}</td>
+                                        <td><a href="" class="btn btn-blue"  data-toggle="modal" data-target=".{{ foo.order_product_id }}"> View</a>
+                                            <!--model -->
+                  <div class="modal fade {{ foo.order_product_id }} " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="myLargeModalLabel" style="color: #f5b703;">Product Details</h4>
+
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							</div>
+							<div class="modal-body"><p style="font-size:18px; color: black;">Product ID : {{ foo.order_product_id }}<br>Product Name : {{ foo.product_name }}
+                                </p>
+
+                                <table style="color: #000000; width: 100%; text-align: justify; border: 1px solid green;">
+
+   <tr>
+       <td style="border: 1px solid green;">Measurement</td><td style="border: 1px solid green;">Description</td><td style="border: 1px solid green;">Value</td>
+   </tr>
+    {% for too in foo.measurements %}
+                                      <tr>
+                                        <td  style="border: 1px solid green;">{{ too.measurement.0.name }} </td>
+                                          <td  style="border: 1px solid green;">{{ too.measurement.0.description }} </td>
+                                        <td style="border: 1px solid green;" >{{ too.value }}</td>
+                                    </tr>
+{% endfor %}
+                                </table>
+
+                            </div>
+							<div class="modal-footer">
+                                <button type="button" class="btn btn-primary waves-effect text-left"onclick="document.title='{{ foo.order_product_id }}-{{ foo.product_name }}';myFunction()">Print</button>
+								<button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+
+							</div>
+						</div>
+						<!-- /.modal-content -->
+                    </div></div></td>
+
+
+                                        <td><a href="" class="btn btn-blue"  data-toggle="modal" data-target=".{{ foo.order_product_id }}{{ foo.order_product_id }}" style="background-color: #8e24aa; border: none;"> View</a>
+                                            <!--model -->
+                  <div class="modal fade {{ foo.order_product_id }}{{ foo.order_product_id }} " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="myLargeModalLabel" style="color: #f5b703;">Job Details</h4>
+
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							</div>
+							<div class="modal-body"><p style="font-size:18px; color: black;">Product ID : {{ foo.order_product_id }}<br>Product Name : {{ foo.product_name }}
+                                </p>
+
+                                <table style="color: #000000; width: 100%; text-align: justify; border: 1px solid green;">
+
+   <tr style="color: blue; font-weight: bold;">
+       <td style="border: 1px solid green;">Job</td><td style="border: 1px solid green;">Start at</td><td style="border: 1px solid green;">Updated/Finished at</td><td  style="border: 1px solid green;">Status</td><td style="border: 1px solid green;">Worker</td><td style="border: 1px solid green;">Print Work Details</td>
+   </tr>
+    {% for job in jobs %}
+        {% if job.item_id == foo.order_product_id  %}
+                                      <tr>
+                                        <td  style="border: 1px solid green;">{{ job.job }} </td>
+                                          <td  style="border: 1px solid green;">{{ job.job_start_at }} </td>
+                                        <td style="border: 1px solid green;" >{{ job.updated_at }}</td>
+                                      <td  style="border: 1px solid green;">{{ job.job_status }}</td>
+                                      <td  style="border: 1px solid green;">
+                                          {% for worker in workers %}
+                                          {% if worker.id == job.worker_id %}
+
+                                              <a class="btn btn-blue" href="/web/manage_worker/{{ worker.id }}" target="_blank">{{ worker.worker_name }}</a>
+                                          {% endif %}
+
+                                          {% endfor %} </td>
+                                      <td><a href="/web/print_job/{{ foo.order_id }}/{{ foo.order_product_id }}/{{ job.id }}/{{ job.worker_id }}/" class="btn btn-blue" style="border: none; background-color: #99ca32;" target="_blank">print</a> </td>
+                                    </tr>{% endif %}
+    {% endfor %}
+                                </table>
+
+                            </div>
+							<div class="modal-footer">
+                                <button type="button" class="btn btn-primary waves-effect text-left"onclick="document.title='{{ foo.order_product_id }}-{{ foo.product_name }}';myFunction()">Print</button>
+								<button type="button" class="btn btn-danger waves-effect text-left" data-dismiss="modal">Close</button>
+
+							</div>
+						</div>
+						<!-- /.modal-content -->
+                    </div></div></td>
+
+
+
+
+<td><div id="{{ foo.order_product_id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+                            <form method="post" action="/web/job">
+                            {% csrf_token %}
+							<div class="modal-header">
+								<h4 class="modal-title" id="myModalLabel">Assign Work</h4>
+
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							</div>
+
+
+<P style="margin-left: 10px;">{{ foo.order_product_id }} : {{ foo.product_name }}<br>Current Status :  {{ foo.order_last_status.status }}</P>
+                        <div class="form-group" style="margin-left:10px; ">
+				  <label for="date1">Select Worker :</label>
+				  <div class="col-sm-10">
+                      <select class="form-control"  name="workerselect" required>
+
+
+                            {% for fooo in workers %}
+                                {% if fooo.worker_desig == "Cutter" and foo.order_last_status.status  == "processing" %}
+                                    <option value="{{ fooo.id }}">{{ fooo.worker_name }} ({{ fooo.worker_desig }})</option>
+                                {% endif %}
+
+                                {% if fooo.worker_desig == "Sticher" and foo.order_last_status.status == "cutting_completed" %}
+                                     <option value="{{ fooo.id }}">{{ fooo.worker_name }} ({{ fooo.worker_desig }})</option>
+                                {% endif %}
+
+
+                          {% endfor %}
+
+
+
+
+
+
+                      </select>
+				  </div>
+				</div>
+                            <div class="form-group" style="width:75%; margin-left:10px;">
+								<label for="date1">Date for start work :</label>
+								<input type="date" class="form-control" id="date1" name="workdate" required> </div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-info waves-effect">Assign</button>
+							</div>
+                            <input type="text" class="form-control" value="{{ foo.order_product_id }}" name="itemid" required hidden>
+                            <input type="text" class="form-control"  value="{{ foo.order_last_status.status}}" name="statuse"  required hidden>
+                            <input type="text" class="form-control"  value="{{ foo.order_id }}" name="orderid"  required hidden>
+                            {% if foo.order_last_status.status == "processing" %}
+                                <input type="text" class="form-control"  value="cut_started" name="nxtstat"  required hidden>
+                            {% else %}
+                                 <input type="text" class="form-control"  value="stitch_started" name="nxtstat"  required hidden>
+                            {% endif %}
+
+                            </form>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>  {% if foo.order_last_status.status == "processing"  %}  <a href="" class="btn btn-blue"  data-toggle="modal" data-target="#{{ foo.order_product_id }}">
+                                                Assign for Cutting
+
+                                            </a>
+                        {% elif  foo.order_last_status.status == "cutting_completed"%} <a href="" class="btn btn-blue"  data-toggle="modal"  data-target="#{{ foo.order_product_id }}" style="border:none; background-color: #8e24aa;">
+                                                Assign for Stitching
+
+
+                                            </a>
+                        {% elif foo.order_last_status.status == "cutting_started"%}<a href="/web/cutting_complete/{{ foo.order_product_id }}/{{  orders.data.order.order_id }}" class="btn btn-brown">
+                                                Mark Cutting Completed
+
+
+
+                                            </a>
+                        {% elif foo.order_last_status.status == "stitching_started" %}<a href="/web/stitching_complete/{{ foo.order_product_id }}/{{  orders.data.order.order_id }}" class="btn btn-brown" style="border:none; background-color: #f5b703">
+                                                Mark Stitching Completed
+
+
+
+                                            </a>
+                        {% else %}
+    <a class="btn btn-brown" style="border:none; background-color: #99ca32; color: #fff">
+                                               Completed
+
+
+
+                                            </a>
+
+
+{% endif %}
+
+                                      </td>
+
+
+
+									</tr>{% endfor %}
+
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+ {% include 'web/footer.html' %}
+
+
+</div>
+
+	<!-- jQuery 3 -->
+	<script src="{% static 'assets/vendor_components/jquery/dist/jquery.js' %}"></script>
+
+	<!-- jQuery UI 1.11.4 -->
+	<script src="{% static 'assets/vendor_components/jquery-ui/jquery-ui.js' %}"></script>
+
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+	<script>
+	  $.widget.bridge('uibutton', $.ui.button);
+	</script>
+
+	<!-- popper -->
+	<script src="{% static 'assets/vendor_components/popper/dist/popper.min.js' %}"></script>
+
+	<!-- Bootstrap 4.0-->
+	<script src="{% static 'assets/vendor_components/bootstrap/dist/js/bootstrap.js' %}"></script>
+
+	<!-- ChartJS -->
+	<script src="{% static 'assets/vendor_components/chart-js/chart.js' %}"></script>
+
+	<!-- Sparkline -->
+	<script src="{% static 'assets/vendor_components/jquery-sparkline/dist/jquery.sparkline.js' %}"></script>
+
+	<!-- daterangepicker -->
+	<script src="{% static 'assets/vendor_components/jquery-sparkline/dist/jquery.sparkline.js' %}"></script>
+	<script src="{% static 'assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+	<!-- datepicker -->
+	<script src="{% static 'assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js' %}"></script>
+
+	<!-- Bootstrap WYSIHTML5 -->
+	<script src="{% static 'assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js' %}"></script>
+
+	<!-- Slimscroll -->
+	<script src="{% static 'assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+
+	<!-- FastClick -->
+	<script src="{% static 'assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+
+	<!-- peity -->
+	<script src="{% static 'assets/vendor_components/jquery.peity/jquery.peity.js' %}"></script>
+
+	<!-- MinimalPro Admin App -->
+	<script src="{% static 'assets/vendor_components/jquery.peity/jquery.peity.js' %}"></script>
+
+	<!-- MinimalPro Admin dashboard demo (This is only for demo purposes) -->
+	<script src="{% static 'js/pages/dashboard.js' %}"></script>
+
+
+    <script src="{% static 'js/template.js' %}"></script>
+	<!-- MinimalPro Admin for demo purposes -->
+	<script src="{% static 'js/demo.js' %}"></script>
+
+    <!-- Vector map JavaScript -->
+    <script src="{% static 'assets/vendor_components/jvectormap/lib2/jquery-jvectormap-2.0.2.min.js' %}"></script>
+    <script src="{% static 'assets/vendor_components/jvectormap/lib2/jquery-jvectormap-world-mill-en.js' %}"></script>
+    <script src="{% static 'assets/vendor_components/jvectormap/lib2/jquery-jvectormap-us-aea-en.js' %}"></script>
+
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
+
+</body>
+
+</html>

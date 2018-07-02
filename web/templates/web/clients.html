@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
+
+    <title>Tailering Admin</title>
+
+	<!-- Bootstrap 4.0-->
+	<link rel="stylesheet" href="{% static 'assets/vendor_components/bootstrap/dist/css/bootstrap.css'  %}">
+
+	<!-- Bootstrap 4.0-->
+	<link rel="stylesheet" href="{% static 'assets/vendor_components/bootstrap/dist/css/bootstrap-extend.css' %}">
+
+	<!-- theme style -->
+	<link rel="stylesheet" href="{% static 'css/master_style.css' %}">
+
+	<!-- MinimalPro Admin skins. choose a skin from the css/skins folder instead of downloading all of them to reduce the load. -->
+	<link rel="stylesheet" href="{% static 'css/skins/_all-skins.css' %}">
+
+    <!-- Vector CSS -->
+    <link href="{% static 'assets/vendor_components/jvectormap/lib2/jquery-jvectormap-2.0.2.css' %}" rel="stylesheet" />
+
+	<!-- date picker -->
+	<link rel="stylesheet" href="{% static 'assets/vendor_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css' %}">
+
+	<!-- daterange picker -->
+	<link rel="stylesheet" href="{% static 'assets/vendor_components/bootstrap-daterangepicker/daterangepicker.css' %}">
+
+	<!-- bootstrap wysihtml5 - text editor -->
+	<link rel="stylesheet" href="{% static 'assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.css' %}">
+
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+
+  </head>
+
+<body class="hold-transition skin-blue-light sidebar-mini">
+<div class="wrapper">
+
+  {% include "web/header.html" %}
+
+  <!-- Left side column. contains the logo and sidebar -->
+ {% include "web/sidebar.html" %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Clients
+      </h1>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="home"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Clients</a></li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+			<div class="col-12">
+				<div class="box">
+					<div class="box-header with-border">
+						<h4 class="box-title">Client List</h4>
+						<h6 class="box-subtitle">List of clients</h6>
+					</div>
+					<div class="box-body">
+						<div class="row mb-30">
+							<!-- Column -->
+							<div class="col-md-6 col-lg-3 col-xlg-3">
+								<div class="box box-inverse box-info">
+									<div class="box-body text-center">
+										<h1 class="font-light text-white">2,064</h1>
+										<h6 class="text-white mb-10">Total Clients</h6>
+									</div>
+								</div>
+							</div>
+							<!-- Column -->
+							<div class="col-md-6 col-lg-3 col-xlg-3">
+								<div class="box box-success box-inverse">
+									<div class="box-body text-center">
+										<h1 class="font-light text-white">1,738</h1>
+										<h6 class="text-white mb-10">Pendings Orders</h6>
+									</div>
+								</div>
+							</div>
+							<!-- Column -->
+							<div class="col-md-6 col-lg-3 col-xlg-3">
+								<div class="box box-inverse box-danger">
+									<div class="box-body text-center">
+										<h1 class="font-light text-white">1100</h1>
+										<h6 class="text-white mb-10">Successful Orders</h6>
+									</div>
+								</div>
+							</div>
+							<!-- Column -->
+							<div class="col-md-6 col-lg-3 col-xlg-3">
+								<div class="box box-inverse box-dark">
+									<div class="box-body text-center">
+										<h1 class="font-light text-white">964</h1>
+										<h6 class="text-white mb-10">Order Cancelled Orders</h6>
+									</div>
+								</div>
+							</div>
+							<!-- Column -->
+						</div>
+						<div class="table-responsive">
+							<table id="tickets" class="table mt-0 table-hover no-wrap" data-page-size="10">
+								<thead>
+									<tr>
+										<th>ID #</th>
+										<th>Name</th>
+										<th>Address</th>
+										<th>Place</th>
+										<th>State</th>
+										<th>DOB</th>
+										<th>Mobile</th>
+										<th>Email</th>
+									</tr>
+								</thead>
+								<tbody>
+                                {% for foo in clients %}
+
+
+									<tr>
+										<td>{{ foo.id }}</td>
+										<td><a href="view_profile/{{ foo.id }}">
+											{{ foo.client_name }}</a>
+										</td>
+										<td>{{ foo.cient_address }}</td>
+										<td>{{ foo.client_place }}</td>
+										<td>{{ foo.client_state }} </td>
+										<td>{{ foo.client_dob }}</td>
+										<td>{{ foo.client_mob }}</td>
+                                        <td>{{ foo.client_email }}</td>
+
+									</tr>
+
+                                {% endfor %}
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+ {% include 'web/footer.html' %}
+
+
+</div>
+
+	<!-- jQuery 3 -->
+	<script src="{% static 'assets/vendor_components/jquery/dist/jquery.js' %}"></script>
+
+	<!-- jQuery UI 1.11.4 -->
+	<script src="{% static 'assets/vendor_components/jquery-ui/jquery-ui.js' %}"></script>
+
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+	<script>
+	  $.widget.bridge('uibutton', $.ui.button);
+	</script>
+
+	<!-- popper -->
+	<script src="{% static 'assets/vendor_components/popper/dist/popper.min.js' %}"></script>
+
+	<!-- Bootstrap 4.0-->
+	<script src="{% static 'assets/vendor_components/bootstrap/dist/js/bootstrap.js' %}"></script>
+
+	<!-- ChartJS -->
+	<script src="{% static 'assets/vendor_components/chart-js/chart.js' %}"></script>
+
+	<!-- Sparkline -->
+	<script src="{% static 'assets/vendor_components/jquery-sparkline/dist/jquery.sparkline.js' %}"></script>
+
+	<!-- daterangepicker -->
+	<script src="{% static 'assets/vendor_components/jquery-sparkline/dist/jquery.sparkline.js' %}"></script>
+	<script src="{% static 'assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+	<!-- datepicker -->
+	<script src="{% static 'assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js' %}"></script>
+
+	<!-- Bootstrap WYSIHTML5 -->
+	<script src="{% static 'assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js' %}"></script>
+
+	<!-- Slimscroll -->
+	<script src="{% static 'assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+
+	<!-- FastClick -->
+	<script src="{% static 'assets/vendor_components/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+
+	<!-- peity -->
+	<script src="{% static 'assets/vendor_components/jquery.peity/jquery.peity.js' %}"></script>
+
+	<!-- MinimalPro Admin App -->
+	<script src="{% static 'assets/vendor_components/jquery.peity/jquery.peity.js' %}"></script>
+
+	<!-- MinimalPro Admin dashboard demo (This is only for demo purposes) -->
+	<script src="{% static 'js/pages/dashboard.js' %}"></script>
+
+
+    <script src="{% static 'js/template.js' %}"></script>
+	<!-- MinimalPro Admin for demo purposes -->
+	<script src="{% static 'js/demo.js' %}"></script>
+
+    <!-- Vector map JavaScript -->
+    <script src="{% static 'assets/vendor_components/jvectormap/lib2/jquery-jvectormap-2.0.2.min.js' %}"></script>
+    <script src="{% static 'assets/vendor_components/jvectormap/lib2/jquery-jvectormap-world-mill-en.js' %}"></script>
+    <script src="{% static 'assets/vendor_components/jvectormap/lib2/jquery-jvectormap-us-aea-en.js' %}"></script>
+
+
+
+</body>
+
+</html>
